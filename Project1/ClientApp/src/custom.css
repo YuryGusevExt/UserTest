@@ -1,0 +1,77 @@
+/* Provide sufficient contrast against white background */
+
+button {
+    width: 189px;
+    height: 38px;
+    background: #4A9DFF;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+body {
+    font-family: 'Ubuntu';
+    font-size: 14px;
+}
+
+div {
+    color: #3C5AA8;
+}
+
+.header {
+    font-weight: bold;
+    position: relative;
+    font-size: 20px;
+    top: 20px;
+    left: 20px;
+}
+
+.messages {
+    position: relative;
+    left:40px;
+    top: 40px;
+    width: 1300px;
+    color: green;
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+}
+
+.pages {
+    position: relative;
+    top: 60px;
+    left: 40px;
+    width: 1300px;
+    height: 500px;
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+}
+
+.error {
+    color: red;
+}
+
+.main {
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 1400px;
+    height: 700px;
+}
+
+.chart {
+    height: 60vh;
+    position: relative;
+    margin-bottom: 1%;
+    padding: 1%;
+}
+
+.info {
+    position: relative;
+    left: 40px;
+    top: 20px;
+    width: 1200px;
+    height: 120px;
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+}
+
+.button {
+    margin-left: 20px;
+}
