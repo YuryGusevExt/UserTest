@@ -50,7 +50,9 @@ export default function Home() {
     const addRow = () => {
         let id = 1;
         datas.forEach((x) => id = x.userID >= id ? x.userID + 1 : id);
-        let tmp = [...datas, { userID: id, registerDate: new Date(Date.now()), lastSeenDate: new Date(Date.now()) }];
+        var today = new Date(Date.now());
+        today.setHours(0, 0, 0, 0);
+        let tmp = [...datas, { userID: id, registerDate: today, lastSeenDate: today }];
         setDatas(tmp);
         setSelectedRow(id);
         setChanged(true);
@@ -112,8 +114,8 @@ export default function Home() {
                     processRowUpdate={processRowUpdate}
                 />
                 <button onClick={addRow}>Add row</button>
-                <button onClick={save} class="button">Save</button>
-                <button onClick={calc} class="button" disabled={changed}>Calculate</button>
+                <button onClick={save} className={"button"}>Save</button>
+                <button onClick={calc} className={"button"} disabled={changed}>Calculate</button>
             </div>
         );
     }
@@ -128,12 +130,12 @@ export default function Home() {
 
     return (
         <div>
-            <div class="header">User data</div>
-            <div class="messages">
-                {error && <p class="error">{error}<br /><button onClick={close}>Close</button><br /></p>}
+            <div className="header">User data</div>
+            <div className="messages">
+                {error && <p className="error">{error}<br /><button onClick={close}>Close</button><br /></p>}
                 {result && result}
             </div>
-            <div class="pages">
+            <div className="pages">
                 {showCalc ? null : renderDatasTable()}
                 {showCalc && Calc(setShowCalc, ret, histX, histY, showCalc)}
             </div>

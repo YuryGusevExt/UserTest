@@ -56,13 +56,13 @@ export default function Calc(showFunc, ret, labels, histY, show) {
     return (
         <>
             <button onClick={close}>Close</button>
-            <div class="info">
+            <div className="info">
             <br />
             <b>Retention:</b> {ret[0]}<br />
             <b>Median:</b> {ret[1]}<br />
             <b>Percentile 10:</b> {ret[2]}<br />
             <b>Percentile 90:</b> {ret[3]}</div>
-            <div class="chart"><Bar options={options} data={data}/></div>
+            <div className="chart"><Bar options={options} data={data}/></div>
         </>
     );
 }
