@@ -4,6 +4,7 @@ import {
     CategoryScale,
     LinearScale,
     BarElement,
+    LineElement,
     Title,
     Tooltip,
     Legend,
@@ -23,6 +24,7 @@ export default function Calc(showFunc, ret, labels, histY, show) {
         CategoryScale,
         LinearScale,
         BarElement,
+        LineElement,
         Title,
         Tooltip,
         Legend
@@ -31,13 +33,41 @@ export default function Calc(showFunc, ret, labels, histY, show) {
     const options = {
         responsive: true,
         maintainAspectRatio: false,
+        scales: {
+            yAxes: {
+                title: {
+                    display: true,
+                    text: 'Users',
+                    font: {
+                        size: 15
+                    }
+                },
+                ticks: {
+                    precision: 0
+                }
+            },
+            xAxes: {
+                type: 'linear',
+                title: {
+                    display: true,
+                    text: 'Days',
+                    font: {
+                        size: 15
+                    }
+                },
+                    ticks: {
+                    stepSize: 1,
+                    fixedStepSize: 1,
+                }
+            }
+        },
         plugins: {
             legend: {
-                position: 'top',
+                display: false,
             },
             title: {
                 display: true,
-                text: 'Histogramm',
+                text: 'Days of life',
             },
         },
     };
@@ -46,9 +76,10 @@ export default function Calc(showFunc, ret, labels, histY, show) {
         labels,
         datasets: [
             {
-                label: 'Days of live',
                 data: histY,
                 backgroundColor: '#4A9DFF',
+                categoryPercentage: 1.0,
+                barPercentage: 1.0
             },
         ],
     };
@@ -57,12 +88,12 @@ export default function Calc(showFunc, ret, labels, histY, show) {
         <>
             <button onClick={close}>Close</button>
             <div className="info">
-            <br />
-            <b>Retention:</b> {ret[0]}<br />
-            <b>Median:</b> {ret[1]}<br />
-            <b>Percentile 10:</b> {ret[2]}<br />
-            <b>Percentile 90:</b> {ret[3]}</div>
-            <div className="chart"><Bar options={options} data={data}/></div>
+                <br />
+                <b>Rolling Retention 7 day:</b> {ret[0]}%<br />
+                <b>Median:</b> {ret[1]}<br />
+                <b>Percentile, 10%:</b> {ret[2]}<br />
+                <b>Percentile, 90%:</b> {ret[3]}</div>
+            <div className="chart"><Bar options={options} data={data} /></div>
         </>
     );
 }

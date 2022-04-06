@@ -58,7 +58,8 @@ namespace Project1.Controllers
         {
             try
             {
-                return ctx.GetCalcResult();
+                var tmp = new UserDataCalc(ctx, DateTime.Now.Date);
+                return tmp.GetCalcResult();
             }
             catch (Exception ex)
             {

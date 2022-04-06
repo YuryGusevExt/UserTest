@@ -60,6 +60,19 @@ export default function Home() {
         setTimeout(() => { document.getElementsByClassName('MuiDataGrid-virtualScroller')[0].scroll(0, tmp.length * 48) }, 333)
     }
 
+    const delRow = () => {
+        if (selectedRow && selectedRow[0]) {
+            let id = datas.findIndex(x => x.userID == selectedRow[0])
+            if (id >= 0) {
+                let tmp = [...datas];
+                tmp.splice(id, 1);
+                setDatas(tmp);
+                setSelectedRow(undefined);
+                setChanged(true);
+            }
+        }
+    }
+
     const save = () => {
         const requestOptions = {
             method: 'POST',
@@ -102,6 +115,10 @@ export default function Home() {
         return { ...newRow, isNew: false };
     };
 
+    const selChanged = (id) => {
+        setSelectedRow(id);
+    };
+
     const renderDatasTable = () => {
         return (
             <div style={{ height: 400, width: '100%' }}>
@@ -110,14 +127,17 @@ export default function Home() {
                     getRowId={(row) => row.userID}
                     rows={datas}
                     columns={columns}
-                    selectionModel={selectedRow}
+                    onSelectionModelChange={selChanged}
+                    disableColumnMenu={true}
                     processRowUpdate={processRowUpdate}
                 />
                 <button onClick={addRow}>Add row</button>
+                <button onClick={delRow} className={"button"}>Del row</button>
                 <button onClick={save} className={"button"}>Save</button>
                 <button onClick={calc} className={"button"} disabled={changed}>Calculate</button>
             </div>
         );
+        //selectionModel={selectedRow}
     }
 
     const getRet = () => ret;
@@ -144,7 +164,7 @@ export default function Home() {
 }
 
 const columns = [
-    { field: 'userID', headerName: 'User', width: 150 },
-    { field: 'registerDate', headerName: 'Registered', width: 150, editable: true, type: 'date', },
-    { field: 'lastSeenDate', headerName: 'Last seen', width: 150, editable: true, type: "date", },
+    { field: 'userID', headerName: 'UserID', width: 150, sortable: false, hideable: false },
+    { field: 'registerDate', headerName: 'Date Registration', width: 150, editable: true, type: 'date', sortable: false, hideable: false },
+    { field: 'lastSeenDate', headerName: 'Date Last Activity', width: 150, editable: true, type: "date", sortable: false, hideable: false },
 ];

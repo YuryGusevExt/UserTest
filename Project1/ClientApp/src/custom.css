@@ -6,11 +6,17 @@ button {
     background: #4A9DFF;
     border-radius: 10px;
     margin-top: 10px;
+    color: #FFFFFF;
+    border: none;
 }
 
 body {
     font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
+    line-height: 16px;
+    background-color: #F9F9F9;
 }
 
 div {
@@ -56,11 +62,26 @@ div {
     height: 700px;
 }
 
+.MuiDataGrid-root
+{
+    background-color: #FFFFFF;
+}
+
+.MuiDataGrid-columnHeaderTitleContainerContent {
+    color: #5D6E97;
+}
+
+.MuiDataGrid-cellContent {
+    color: #5D6E97;
+}
+
 .chart {
     height: 60vh;
     position: relative;
     margin-bottom: 1%;
+    margin-top: 40px;
     padding: 1%;
+    background-color: #FFFFFF;
 }
 
 .info {
@@ -70,6 +91,8 @@ div {
     width: 1200px;
     height: 120px;
     box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+    background-color: #FFFFFF;
+    padding-left: 31px;
 }
 
 .button {
